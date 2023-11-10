@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Suite">
+
+<test name="Run on CHROME">
+  	<parameter name="browser" value="chrome"/>
+  	<parameter name="environment" value="PRODUCT"/>
+    <classes>
+      <class name="com.bankguru.Common_Create_New_Customer"/>
+    </classes>
+  </test> 
+  
+</suite> 
+
