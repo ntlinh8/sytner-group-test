@@ -43,7 +43,7 @@ public class BasePage {
 	}
 	
 	public void openNewTabWithUrl(WebDriver driver, String url) {
-		((JavascriptExecutor) driver).executeScript("window.open()");
+		((JavascriptExecutor) driver).executeScript("window.open(" + url + ", 'NEW')");
 		SleepInSecond(2);
 		openPageUrl(driver, url);
 	}
@@ -51,7 +51,6 @@ public class BasePage {
 	public void closeTheCurrentTab(WebDriver driver) {
 		((JavascriptExecutor) driver).executeScript("window.close()");
 		SleepInSecond(2);
-		
 	}
 	
 	public String getPageTitle(WebDriver driver) {
@@ -120,6 +119,10 @@ public class BasePage {
 				break;
 			}
 		}
+	}
+	
+	public void switchToNewWindow(WebDriver driver) {
+		driver.switchTo().window("NEW");
 	}
 	
 	public void closeAllTabWindowParent(WebDriver driver, String parentID) {
