@@ -42,6 +42,18 @@ public class BasePage {
 		driver.get(url);
 	}
 	
+	public void openNewTabWithUrl(WebDriver driver, String url) {
+		((JavascriptExecutor) driver).executeScript("window.open()");
+		SleepInSecond(2);
+		openPageUrl(driver, url);
+	}
+	
+	public void closeTheCurrentTab(WebDriver driver) {
+		((JavascriptExecutor) driver).executeScript("window.close()");
+		SleepInSecond(2);
+		
+	}
+	
 	public String getPageTitle(WebDriver driver) {
 		return driver.getTitle();
 	}
@@ -172,6 +184,18 @@ public class BasePage {
 	
 	public void clickToElement(WebDriver driver, String locator, String... dynamicValues) {
 		getWebElement(driver, getDynamicXpath(locator, dynamicValues)).click();
+	}
+	
+	public void clickToElementIfVisible(WebDriver driver, String locator) {
+		if(isElementDisplayed(driver, locator)) {
+			clickToElement(driver, locator);
+		}
+	}
+	
+	public void clickToElementIfVisible(WebDriver driver, String locator, String... dynamicValues) {
+		if(isElementDisplayed(driver, locator, dynamicValues)) {
+			clickToElement(driver, locator, dynamicValues);
+		}
 	}
 	
 	public void sendkeyToElement(WebDriver driver, String locator, String textValue) {

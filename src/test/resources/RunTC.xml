@@ -5,7 +5,7 @@
   	<parameter name="browser" value="chrome"/>
   	<parameter name="environment" value="PRODUCT"/>
     <classes>
-      <class name="com.bankguru.Common_Create_New_Customer"/>
+      <class name="com.HomePage_001_MenuItems"/>
     </classes>
   </test> 
   
