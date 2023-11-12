@@ -12,7 +12,7 @@ import pageObjects.PageGeneratorManager;
 
 public class HomePage_001_MenuItems extends BaseTest{
 
-	public WebDriver driver;
+	WebDriver driver;
 	private HomePO homePage;
 	
 	@Parameters({"browser", "environment"})
