@@ -54,4 +54,17 @@ public class SearchPO extends CommonPO{
 		
 	}
 
+	public void clickSortByLabel(WebDriver driver, String label) {
+		waitForElementVisible(driver, SearchUI.Search_button_SortBy);
+		clickToElement(driver, SearchUI.Search_button_SortBy);
+		SleepInSecond(2);
+		waitForElementVisible(driver, SearchUI.Search_option_DynamicSortOptionByLabel, label);
+		clickToElement(driver, SearchUI.Search_option_DynamicSortOptionByLabel, label);
+	}
+
+	public boolean isSortedResultByOption(String sortedObject, String sortedOption) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
