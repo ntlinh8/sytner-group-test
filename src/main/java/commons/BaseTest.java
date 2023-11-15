@@ -130,7 +130,7 @@ public class BaseTest {
 		return isPassed;
 	}
 
-	protected boolean verifyEquals(String actual, String expected) {
+	protected boolean verifyEquals(Object actual, Object expected) {
 		boolean isPassed = true;
 		try {
 			Assert.assertEquals(actual, expected);

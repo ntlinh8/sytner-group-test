@@ -20,4 +20,9 @@ public class CommonPO extends BasePage{
 	public void clickToAcceptCookie(WebDriver driver) {
 		clickToElementIfVisible(driver, CommonUI.Common_button_AcceptCookie);
 	}
+	
+	public void inputTextToDynamicTextboxByPlaceholder(WebDriver driver, String textValue, String placeholder) {
+		waitForElementVisible(driver, CommonUI.Common_textbox_DynamicTextboxByPlaceholder, placeholder);
+		sendkeyToElement(driver, CommonUI.Common_textbox_DynamicTextboxByPlaceholder, textValue, placeholder);
+	}
 }
