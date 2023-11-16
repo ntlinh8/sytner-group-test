@@ -5,7 +5,7 @@
   	<parameter name="browser" value="chrome"/>
   	<parameter name="environment" value="PRODUCT"/>
     <classes>
-      <class name="com.HomePage_003_CarSearch_01"/>
+      <class name="com.HomePage_004_CarSearch_02"/>
     </classes>
   </test> 
   

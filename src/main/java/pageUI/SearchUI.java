@@ -9,4 +9,6 @@ public class SearchUI {
 	public static final String Search_menu_DynamicLeftMenuByLabel = "xpath=//div[@id='search-filters-categories']//button[text()='%s']";
 	public static final String Search_button_SortBy = "xpath=//div[contains(text(), 'Sort by')]//input[@id='search-header-sort-by']";
 	public static final String Search_option_DynamicSortOptionByLabel = "xpath=//ul[@id='search-header-sort-by-menu']/li[contains(text(), '%s')]";
+	public static final String Search_text_AllPrice = "xpath=//section[@id='search-results']//div[contains(@class, 'price')]";
+	public static final String Search_text_AllMonthlyPayment = "xpath=//section[@id='search-results']//div[contains(text(), 'Per month')]/..";
 }

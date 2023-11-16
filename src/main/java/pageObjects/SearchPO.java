@@ -1,6 +1,12 @@
 package pageObjects;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import pageUI.SearchUI;
 
@@ -60,11 +66,54 @@ public class SearchPO extends CommonPO{
 		SleepInSecond(2);
 		waitForElementVisible(driver, SearchUI.Search_option_DynamicSortOptionByLabel, label);
 		clickToElement(driver, SearchUI.Search_option_DynamicSortOptionByLabel, label);
+		SleepInSecond(2);
 	}
 
-	public boolean isSortedResultByOption(String sortedObject, String sortedOption) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isSortByPrice(String sortedOption) throws Exception {
+		List<Integer> expectedPriceList = new ArrayList<Integer>();
+		List<Integer> actualPriceList = new ArrayList<Integer>();
+		List<WebElement> elementList = getWebElements(driver, SearchUI.Search_text_AllPrice);
+		for (WebElement element : elementList) {
+			String text = element.getText().replace("Vehicle price:", "").replace(",", "").replace("£", "").replace(" + VAT", "").trim();
+			actualPriceList.add(Integer.valueOf(text));
+			expectedPriceList.add(Integer.valueOf(text));
+		}
+		switch (sortedOption) {
+		case "Low to High":
+			Collections.sort(expectedPriceList);
+			break;
+		case "High to Low":
+			Collections.sort(expectedPriceList);
+			Collections.reverse(expectedPriceList);
+			break;
+		default:
+			throw new Exception("Please enter the valid sorted option");
+		}
+		return expectedPriceList.equals(actualPriceList);
 	}
-
+	
+	public boolean isSortByMonthlyPayment(String sortedOption) throws Exception {
+		List<Integer> expectedPaymentList = new ArrayList<Integer>();
+		List<Integer> actualPaymentList = new ArrayList<Integer>();
+		List<WebElement> elementList = getWebElements(driver, SearchUI.Search_text_AllMonthlyPayment);
+		for (WebElement element : elementList) {
+			String text = element.getText().split("£")[1].replace(",", "").trim();
+			actualPaymentList.add(Integer.valueOf(text));
+			expectedPaymentList.add(Integer.valueOf(text));
+		}
+		switch (sortedOption) {
+		case "Low to High":
+			Collections.sort(expectedPaymentList);
+			break;
+		case "High to Low":
+			Collections.sort(expectedPaymentList);
+			Collections.reverse(expectedPaymentList);
+			break;
+		default:
+			throw new Exception("Please enter the valid sorted option");
+		}
+		return expectedPaymentList.equals(actualPaymentList);
+	}
+	
+	
 }

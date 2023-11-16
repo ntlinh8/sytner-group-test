@@ -1,5 +1,6 @@
 package commons;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -230,7 +231,7 @@ public class BasePage {
 		select.selectByVisibleText(textItem);
 	}
 	
-	public void SelectCustomDropDown(WebDriver driver, String parentLocator, String childLocator, String expectedItem) {
+	public void selectCustomDropDown(WebDriver driver, String parentLocator, String childLocator, String expectedItem) {
 		clickToElement(driver, parentLocator);
 		waitForAllElementPresence(driver, childLocator);
 		List<WebElement> speedDropdownItems = getWebElements(driver, childLocator);
@@ -584,4 +585,16 @@ public class BasePage {
 		fullFilePaths.trim();
 		getWebElement(driver, locator).sendKeys(fullFilePaths);
 	}
+	
+	public List<String> getElementTexts(WebDriver driver, String locator) {
+		List<String> textList = new ArrayList<String>();
+		List<WebElement> elementList = getWebElements(driver, locator);
+		for (WebElement element : elementList) {
+			String text = element.getText();
+			textList.add(text);
+		}
+		return textList;
+	}
+	
+	
 }
