@@ -586,15 +586,4 @@ public class BasePage {
 		getWebElement(driver, locator).sendKeys(fullFilePaths);
 	}
 	
-	public List<String> getElementTexts(WebDriver driver, String locator) {
-		List<String> textList = new ArrayList<String>();
-		List<WebElement> elementList = getWebElements(driver, locator);
-		for (WebElement element : elementList) {
-			String text = element.getText();
-			textList.add(text);
-		}
-		return textList;
-	}
-	
-	
 }
